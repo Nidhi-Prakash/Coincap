@@ -1,0 +1,30 @@
+.summary-container {
+    // border: 2px solid red;
+    box-sizing: border-box;
+    background-image: linear-gradient(to right, #3f51b5, #64b4f6);
+    height: 230px;
+
+    .summary-items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 250px;
+
+        .sitem-name {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+
+            .title {
+                font-weight: 700;
+            }
+
+            .amount {
+                font-weight: 600;
+                line-height: 0em;
+                font-size: 20px;
+            }
+
+        }
+    }
+}

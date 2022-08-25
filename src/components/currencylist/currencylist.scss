@@ -1,0 +1,137 @@
+.currency-container {
+    border: 2px solid bl;
+    padding: 10px 90px;
+    margin: -143px auto;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 4px;
+    width: 70%;
+    // border: 2px solid black;
+    // border-collapse: collapse;
+
+
+
+    .thead-container {
+
+        .headings {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            column-gap: 40px;
+
+            .fir-sec {
+                display: flex;
+                column-gap: 35px;
+                position: relative;
+                right: 100px;
+            }
+
+            .othername {
+                display: flex;
+                column-gap: 40px;
+                position: relative;
+                left: 90px;
+            }
+
+
+            .heading-name {
+                font-size: small;
+                font-weight: 500;
+                font-family: 'Lato', sans-serif;
+                color: #656565;
+                box-sizing: border-box;
+                margin: 0px 10px;
+                // flex: 1;
+            }
+        }
+    }
+
+    // .tbody-container{
+    //     border: 2px solid black;
+    //     box-sizing: border-box;
+
+
+
+    //     .currency-rows{
+    //         display: flex;
+    //         // justify-content: space-around;
+    //         // align-items: center;
+    //         column-gap: 200px;
+    //         padding: 5px ;
+
+
+
+    //         .fir-two-cur{
+    //             display: flex;
+    //             // column-gap: 40px;
+    //             position: relative;
+    //             right: 70px;
+    //             // text-align: right;
+
+    //             td{
+    //                 vertical-align: middle;
+    //                 text-align: center;
+
+    //             }
+
+
+    //             .cur-items1{
+    //                 text-align: center;
+
+    //             }
+
+    //             .cur-items2{
+    //                 text-align: left;
+    //                 position: relative;
+    //                 left: 50px;
+
+    //             }
+
+    //         }
+
+
+    //         .other-cur{
+    //             display: flex;
+    //             column-gap: 50px;
+    //             // position: relative;
+    //             // left: 90px;
+    //             // text-align: right;
+
+
+    //             .cur-items3{
+    //                 text-align: left;
+    //                 position: relative;
+    //                 border: 2px solid black;
+    //             }
+
+    //         }
+    //     }
+    // }
+
+
+
+    .tbody-container{
+
+        .currency-rows{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            .fir-two-cur{
+                padding: 10px;
+                display: flex;
+                column-gap: 60px;
+
+                .cur-items{
+                    display: flex;
+                    vertical-align: middle;
+                    text-align: center;
+                    margin-right: 10px;
+                }
+            }
+
+        }
+    }
+
+}
