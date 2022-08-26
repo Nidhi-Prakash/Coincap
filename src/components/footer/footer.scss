@@ -1,0 +1,124 @@
+.footer-container {
+    box-sizing: border-box;
+    margin-top: 220px;
+    background-image: linear-gradient(to right, #3f51b5, #64b4f6);
+
+
+    .footer-inner-container {
+        display: flex;
+        justify-content: space-evenly;
+
+
+        .first-part{
+            position: relative;
+            left: 10px;
+            font-size: small;
+            font-weight: 500;
+            color: white;
+
+            .light-color-text{
+                color: rgba(208, 208, 208, 0.674);
+            }
+
+            .light-color-text:hover{
+                color: white;
+                cursor: pointer;
+            }
+
+
+        }
+
+        .sec-part{
+            position: relative;
+            left: 38px;
+            font-size: small;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            color: white;
+
+            .light-color-text{
+                color: rgba(208, 208, 208, 0.674);
+            }
+
+            .light-color-text:hover{
+                color: white;
+                cursor: pointer;
+            }
+
+
+            .address{
+                width: 270px;
+                color: rgba(208, 208, 208, 0.674);
+            }
+
+
+        }
+
+        .third-part{
+            position: relative;
+            right: 25px;
+            font-size: small;
+            font-weight: 500;
+            color: white;
+
+            .light-color-text{
+                color: rgba(208, 208, 208, 0.674);
+            }
+
+            .light-color-text:hover{
+                color: white;
+                cursor: pointer;
+            }
+
+            .social-icons{
+                height: 30px;
+                width: 30px;
+                cursor: pointer;
+                color: #d5d9e6;
+            }
+
+            .social-icons:hover{
+                color: white;
+            }
+
+        }
+
+        .forth-part{
+            position: relative;
+            left: 10px;
+            font-size: small;
+            font-weight: 500;
+            color: white;
+
+            .light-color-text{
+                color: rgba(208, 208, 208, 0.674);
+            }
+
+            .light-color-text:hover{
+                color: white;
+                cursor: pointer;
+            }
+
+            .download-links{
+                display: flex;
+                flex-direction: column;
+                height: 150px;
+                width: 150px;
+                row-gap: 10px;
+            }
+
+            .download-icons{
+                opacity: 0.5;
+            }
+
+            .download-icons:hover{
+                cursor: pointer;
+                opacity: 1;
+            }
+
+
+        }
+    }
+
+}

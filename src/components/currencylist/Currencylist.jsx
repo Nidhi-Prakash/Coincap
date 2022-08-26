@@ -2,20 +2,18 @@ import React, { useEffect, useState } from 'react';
 import "./currencylist.scss";
 import { MdArrowDropUp } from "react-icons/md";
 
-//https://assets.coincap.io/assets/icons/<lowercase of currency symbol>@2x.png
 
 const Currencylist = () => {
 
     const [coins, setCoins] = useState([]);
+    const [limit, setLimit] = useState(50);
 
     useEffect(() => {
         const fetchcoins = async () => {
             try {
-                let url = `https://api.coincap.io/v2/assets?limit=50`;
-
+                let url = `https://api.coincap.io/v2/assets?limit=${limit}`;
                 let res = await fetch(url);
                 let data = await res.json();
-                console.log(data.data);
                 setCoins(data.data)
             } catch (error) {
                 console.log(error);
@@ -23,59 +21,63 @@ const Currencylist = () => {
         };
 
         fetchcoins();
-    }, []);
+
+    }, [limit])
+
+    const readableNumber = (number) => {
+        let s = "";
+        let arr: String[] = number.split(".");
+        if (arr[0].length >= 9) {
+            s = "b";
+            arr[0] = arr[0].slice(0, arr[0].length - 9) + "." + arr[0].slice(arr[0].length - 9)
+        } else if (arr[0].length >= 6) {
+            s = "m";
+            arr[0] = arr[0].slice(0, arr[0].length - 6) + "." + arr[0].slice(arr[0].length - 6)
+        }
+        console.log();
+        return parseFloat(arr[0] + arr[1]).toFixed(2) + s
+    };
+    
 
 
     return (
-        <table className='currency-container'>
-            <thead className='thead-container'>
+        <>
+            <div className="currency-table-container">
+                <table className='currency-table'>
+                    <tr>
+                        <th style={{ color: "black", fontWeight: "600" }}>Rank <MdArrowDropUp style={{ color: "black", position: "relative", top: "3px" }} /> </th>
+                        <th >Name</th>
+                        <th >Price</th>
+                        <th >Market Cap</th>
+                        <th >VWAP(24Hr)</th>
+                        <th >Supply</th>
+                        <th >Volume(24Hr)</th>
+                        <th >Change(24Hr)</th>
+                    </tr>
+                    {
+                        coins.map(({ id, rank, name, priceUsd, supply, marketCapUsd, vwap24Hr, volumeUsd24Hr, changePercent24Hr, symbol }) => (
+                            <tr key={id} className="headings">
 
-                <tr className='headings'>
+                                <td >{rank}</td>
+                                <td >{name} </td>
+                                <td >${parseFloat(priceUsd).toFixed(2)}</td>
+                                <td >${readableNumber(marketCapUsd)}</td>
+                                <td >${parseFloat(vwap24Hr).toFixed(2)}</td>
+                                <td >{readableNumber(supply)}</td>
+                                <td >${readableNumber(volumeUsd24Hr)}</td>
+                                <td >{parseFloat(changePercent24Hr).toFixed(2)}%</td>
 
-                    <div className='fir-sec'>
-                        <th className='heading-name' style={{ color: "black", fontWeight: "600" }}>Rank <MdArrowDropUp style={{ color: "black", position: "absolute", top: "3px" }} /> </th>
-                        <th className='heading-name'>Name</th>
-                    </div>
+                            </tr>
+                        ))
+                    }
+                </table>
+            </div>
 
-                    <div className='othername'>
-                        <th className='heading-name'>Price</th>
-                        <th className='heading-name'>Market Cap</th>
-                        <th className='heading-name'>VWAP(24Hr)</th>
-                        <th className='heading-name'>Supply</th>
-                        <th className='heading-name'>Volume(24Hr)</th>
-                        <th className='heading-name'>Change(24Hr)</th>
-                    </div>
-
-                </tr>
-
-            </thead>
+            <button className='vm-btn' onClick={() => setLimit(limit + 50)}>View More</button>
+        </>
 
 
-            <tbody className='tbody-container'>
-                {
-                    coins.map(({ id, rank, name, priceUsd, supply, marketCapUsd, vwap24Hr, volumeUsd24Hr, changePercent24Hr, symbol }) => (
-                        <tr key={id} className="currency-rows">
 
-                            <div className='fir-two-cur'>
-                                <td className='cur-items'>{rank}</td>
-                                <td className='cur-items'>{name}</td>
-                            </div>
-
-                            <div className='other-cur'>
-                                <td className='cur-items'>${parseFloat(priceUsd).toFixed(2)}</td>
-                                <td className='cur-items'>${parseFloat(Math.floor(marketCapUsd) / 100000000).toFixed(2)}</td>
-                                <td className='cur-items'>${parseFloat(vwap24Hr).toFixed(2)}</td>
-                                <td className='cur-items'>{parseFloat(Math.floor(supply) / 100000000).toFixed(2)}</td>
-                                <td className='cur-items'>${parseFloat(Math.floor(volumeUsd24Hr) / 100000000).toFixed(2)}</td>
-                                <td className='cur-items'>{parseFloat(changePercent24Hr).toFixed(2)}%</td>
-                            </div>
-
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
-        
     );
 };
 
